@@ -1,0 +1,10 @@
+{
+    "career_insights": [
+        {"id": "c1", "fact": "Product Management requires strong cross-functional communication abilities.", "source_date": "2026-03-01"},
+        {"id": "c2", "fact": "A background in AI/Data Science is a massive asset in the current market, bridging technical depth and business logic.", "source_date": "2026-04-20"}
+    ],
+    "technical_standards": [
+        {"id": "t1", "fact": "Modern Python development heavily favours using virtual environments (venv/conda).", "source_date": "2025-12-10"},
+        {"id": "t2", "fact": "The primary tooling for cloud infrastructure management in a local MVP is Docker Compose.", "source_date": "2026-01-05"}
+    ]
+}
