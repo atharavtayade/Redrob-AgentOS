@@ -1,10 +1,57 @@
 {
-    "career_insights": [
-        {"id": "c1", "fact": "Product Management requires strong cross-functional communication abilities.", "source_date": "2026-03-01"},
-        {"id": "c2", "fact": "A background in AI/Data Science is a massive asset in the current market, bridging technical depth and business logic.", "source_date": "2026-04-20"}
+    "structured_facts": {
+        "8d2f7706-b8aa-4926-8ac1-6041c93fa254": {
+            "fact": "Dummy fact for testing.",
+            "source_date": "2026-06-24T19:42:51.676470"
+        },
+        "61c64e3c-f928-4b7a-9787-d9aaf24d9e14": {
+            "fact": "Dummy fact for testing.",
+            "source_date": "2026-06-24T21:55:24.295309"
+        }
+    },
+    "goals": [
+        {
+            "id": "305a2bce-87c3-4425-9135-634e8f010f9a",
+            "goal": "Test goal for verification",
+            "timestamp": "2026-06-24T19:42:51.662471"
+        },
+        {
+            "id": "16135dda-61ea-4e57-af80-1f19142b804d",
+            "goal": "Goal to transition from Data Science to Product Management in FinTech.",
+            "timestamp": "2026-06-24T19:42:51.669472"
+        },
+        {
+            "id": "6c599cd5-1088-477d-8293-7dcb21e4443e",
+            "goal": "Goal to transition from Data Science to Product Management in FinTech.",
+            "timestamp": "2026-06-24T21:55:24.198519"
+        },
+        {
+            "id": "c9f722c1-d5c6-49dc-be22-9f88567e7f4a",
+            "goal": "Goal for final verification",
+            "timestamp": "2026-06-24T22:00:40.167126"
+        }
     ],
-    "technical_standards": [
-        {"id": "t1", "fact": "Modern Python development heavily favours using virtual environments (venv/conda).", "source_date": "2025-12-10"},
-        {"id": "t2", "fact": "The primary tooling for cloud infrastructure management in a local MVP is Docker Compose.", "source_date": "2026-01-05"}
-    ]
+    "notes": [
+        {
+            "id": "ee586fc6-e6b6-353f-83fd-50af767c9e8b",
+            "content": "Reminder: Need to check Python version compatibility with FastAPI.",
+            "timestamp": "2026-06-24T19:42:51.675470"
+        },
+        {
+            "id": "a6c7fafa-65ca-3395-bff5-5a533e517736",
+            "content": "Review documentation on cloud credentials flow.",
+            "timestamp": "2026-06-24T19:42:51.676470"
+        },
+        {
+            "id": "ee586fc6-e6b6-353f-83fd-50af767c9e8b",
+            "content": "Reminder: Need to check Python version compatibility with FastAPI.",
+            "timestamp": "2026-06-24T21:55:24.294310"
+        },
+        {
+            "id": "a6c7fafa-65ca-3395-bff5-5a533e517736",
+            "content": "Review documentation on cloud credentials flow.",
+            "timestamp": "2026-06-24T21:55:24.294310"
+        }
+    ],
+    "career_insights": []
 }

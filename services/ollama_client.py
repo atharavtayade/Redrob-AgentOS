@@ -1,12 +1,19 @@
+import os
 import requests
 from typing import Optional
+
+# Single source of truth for the Ollama model. Override at runtime by setting
+# the OLLAMA_MODEL environment variable; otherwise defaults to "qwen3:8b".
+DEFAULT_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:8b")
+
 
 class OllamaClient:
     """
     A robust client wrapper for communicating with a local Ollama instance.
-    The model used is gemma4:latest as per the project requirements (Gemma 4/Ollama).
+    The model is determined by DEFAULT_MODEL (env: OLLAMA_MODEL, fallback: qwen3:8b)
+    unless explicitly overridden via the model_name argument.
     """
-    def __init__(self, base_url: str = "http://localhost:11434", model_name: str = "gemma4:latest"):
+    def __init__(self, base_url: str = "http://localhost:11434", model_name: str = DEFAULT_MODEL):
         self.base_url = base_url
         self.model_name = model_name
 

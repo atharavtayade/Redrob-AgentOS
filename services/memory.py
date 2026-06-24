@@ -51,11 +51,28 @@ class MemoryManager:
 
     def remember_career_insight(self, insight: str) -> None:
         """
-        Stores a career insight in the persistent memory.
+        Stores a career insight in the persistent memory for future career intelligence.
+        Accepts a plain string and persists it with a timestamp.
         """
-        self.memory_data.get('career_insights', []).append(insight)
+        if not insight or not isinstance(insight, str):
+            return
+        insights = self.memory_data.setdefault('career_insights', [])
+        insights.append({
+            "content": insight,
+            "timestamp": datetime.now().isoformat()
+        })
         self._save_state()
-        print("[MemoryManager] Goal remembered successfully.")
+        print("[MemoryManager] Career insight remembered successfully.")
+
+    def get_recent_career_insights(self, limit: int = 10) -> list:
+        """
+        Retrieves the N most recent career insights from persistent memory.
+        Backward compatible with legacy plain-string entries and structured dict entries.
+        """
+        insights = self.memory_data.get("career_insights", [])
+        if not insights:
+            return []
+        return insights[-limit:] if len(insights) >= limit else list(insights)
 
     def get_latest_goal(self) -> Optional[str]:
         """Returns the most recently set goal."""
@@ -64,6 +81,34 @@ class MemoryManager:
             return None
         # Assuming the goals list is appended in time order, the last element is the latest.
         return goals[-1]['goal']
+
+    def remember_goal(self, goal: str) -> None:
+        """
+        Stores a career goal with timestamp and unique ID for persistent memory tracking.
+
+        Args:
+            goal: The specific career goal string to store (e.g., "Become ML Engineer").
+
+        Behavior:
+            - Appends goal entry to memory_data["goals"] list
+            - Includes id (UUID), content, and timestamp
+            - Calls self._save_state() to persist changes
+            - Backward compatible with existing code patterns
+        """
+        if not goal or not isinstance(goal, str):
+            return
+
+        new_goal_entry = {
+            "id": str(uuid.uuid4()),
+            "goal": goal.strip(),
+            "timestamp": datetime.now().isoformat()
+        }
+
+        goals = self.memory_data.setdefault("goals", [])
+        goals.append(new_goal_entry)
+
+        self._save_state()
+        print("[MemoryManager] Goal remembered successfully.")
 
     def force_sync_goals(self) -> bool:
         """Persists changes to goal memories."""
