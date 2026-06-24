@@ -22,6 +22,18 @@ except ImportError:
             return "The user showed strong interest in AI/ML frameworks like PyTorch and TensorFlow, and expressed a desire for hands-on project experience over theoretical knowledge."
     MemoryManager = MockMemoryManager
 
+try:
+    from .skill_gap import analyze_skill_gap
+except ImportError:
+    print("Warning: skill_gap not found. Skill gap reporting will return an empty report.")
+    def analyze_skill_gap(target_role: str, current_skills: list) -> dict:
+        return {
+            "target_role": target_role,
+            "current_skills": list(current_skills) if isinstance(current_skills, list) else [],
+            "missing_skills": [],
+            "recommended_learning_order": []
+        }
+
 class PlannerAgent:
     """
     Plans career trajectories based on user goals, memory context, and external LLM capabilities.
@@ -68,6 +80,11 @@ class PlannerAgent:
             system_context=system_context
         )
         return response
+
+
+    def generate_skill_gap_report(self, target_role: str, current_skills: list) -> dict:
+        print(f"--- Generating Skill Gap Report for role: {target_role} ---")
+        return analyze_skill_gap(target_role, current_skills)
 
 
 if __name__ == "__main__":
