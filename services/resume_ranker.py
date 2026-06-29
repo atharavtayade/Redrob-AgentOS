@@ -5,6 +5,13 @@ def _normalize_skills(text):
     """Normalize skills to lowercase."""
     if not text:
         return set()
+    
+    # Handle list input (skill tags)
+    if isinstance(text, list):
+        result = [s.lower().strip() for s in text]
+        return {p for p in result if p}  # remove empty values
+    
+    # String input - existing regex behavior
     parts = re.split(r'[,;\s]+', text.lower().strip())
     return {p for p in parts if p}
 
@@ -48,7 +55,7 @@ def rank_candidates(job_description, candidates):
         results.append({
             'name': name,
             'score': min(score, 100),  # Clamp to max 100
-            'matched_skills': matched_skills,
+            'matched_skills': sorted(list(matched_skills)),  # Convert set to sorted list before returning
         })
 
     # Sort by descending score (then by name for determinism when scores are equal)
